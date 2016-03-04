@@ -1,0 +1,67 @@
+@(searchForm:Form[EmployeeSearch],employeeList:List[Employee])(implicit message:Messages)
+
+@import scala.collection.mutable.ListBuffer
+
+
+@import b3.vertical.fieldConstructor
+
+@main("ListEmployee"){
+    @b3.form(action = routes.EmployeeController.searchAuth()){
+<div class="container">
+    <div class="jumbotron"style="border:2px solid black">
+        <h1>PLAY ASSIGNMENT</h1>
+        <p>TOTAL NO OF EMPLOYESS---@employeeList.length</p>
+    </div>
+</div>
+    <form role="form">
+        <form class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <form action="#" method="get">
+                            <div class="input-group">
+                                @b3.text(searchForm("name"),'_showConstraints->false)
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-9">
+                        <table class="table table-list-search"style="border:2px solid black">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Date of Birth</th>
+                                <th>Designation</th>
+                                <th>Date of Joining</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @for(employee <-employeeList){
+                            <tr>
+                                <td><a href="@routes.EmployeeController.updateEmployee(employee.name)" >@employee.name</a></td>
+                                <td>@employee.address</td>
+                                <td>@employee.dob</td>
+                                <td>@employee.joiningDate</td>
+                                <td>@employee.designation</td>
+                                }
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </form>
+    }
+
+    @b3.form(action = routes.EmployeeController.addEmployee ){
+        <input type="submit" value="Add Employee">
+    }
+
+
+}

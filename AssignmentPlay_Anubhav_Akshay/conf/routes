@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+GET     /webjars/*file              controllers.WebJarAssets.at(file)
+
+
+#Index Page
+GET     /index                      controllers.Application.index
+
+#List Page
+GET     /list                       controllers.EmployeeController.listEmployees()
+
+#Add Employee Form Page
+GET    /addEmployee                controllers.EmployeeController.addEmployee()
+
+POST    /auth                       controllers.EmployeeController.auth()
+
+POST    /search_auth                controllers.EmployeeController.searchAuth()
+
+GET     /update                     controllers.EmployeeController.updateEmployee(name)
+
+POST    /update_auth                controllers.EmployeeController.updateAuth(name)
+
+POST     /delete                     controllers.EmployeeController.delete(name)

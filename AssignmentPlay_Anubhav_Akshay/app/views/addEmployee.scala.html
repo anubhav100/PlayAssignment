@@ -1,0 +1,26 @@
+@(addEmployeeForm:Form[EmployeeFormData])(implicit message:Messages)
+@import b3.vertical.fieldConstructor
+
+@main("Add Employee"){
+    <div>
+        @b3.form(action = routes.EmployeeController.auth ){
+        <div class="container">
+            <div class="jumbotron"style="border:2px solid black">
+                <h2>Enter Details Of new Employee</h2>
+                <div class="row">
+                    <div class="col-md-3" col-sm-offset-6 >
+                        @b3.text(addEmployeeForm("name"),'_label->"Name",'_showConstraints->false)
+                        @b3.text(addEmployeeForm("address"),'_label->"Address",'_showConstraints->false)
+                        @b3.date(addEmployeeForm("dob"),'_label->"DOB",'_showConstraints->false)
+                        @b3.date(addEmployeeForm("joiningDate"),'_label->"Joining Date",'_showConstraints->false)
+                        @b3.text(addEmployeeForm("designation"),'_label->"Designation",'_showConstraints->false)
+                        <input type="submit"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+}
+
+

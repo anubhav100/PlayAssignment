@@ -1,0 +1,32 @@
+@(employee:Employee,updateEmployeeForm:Form[EmployeeFormData])(implicit message:Messages)
+@import b3.vertical.fieldConstructor
+
+
+@main("Add Employee"){
+<div>
+    @b3.form(action = routes.EmployeeController.updateAuth(employee.name) ){
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Enter Details Of new Employee</h2>
+            <div class="row">
+                <div class="col-md-3" col-sm-offset-6 >
+                    @b3.text(updateEmployeeForm("name"),'value->employee.name,'_label->"Name",'_showConstraints->false)
+                    @b3.text(updateEmployeeForm("address"),'value->employee.address,'_label->"Address",'_showConstraints->false)
+                    @b3.text(updateEmployeeForm("dob"),'value->employee.dob,'_label->"DOB",'_showConstraints->false)
+                    @b3.text(updateEmployeeForm("joiningDate"),'value->employee.joiningDate,'_label->"Joining Date",'_showConstraints->false)
+                    @b3.text(updateEmployeeForm("designation"),'value->employee.designation,'_label->"Designation",'_showConstraints->false)
+                    <input type="submit"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<div>
+    @b3.form(action = routes.EmployeeController.delete(employee.name) ){
+        <input type="submit" value="Delete"/>
+    }
+</div>
+}
+
